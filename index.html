@@ -19,14 +19,16 @@
             <img :class="{ 'out-of-stock-img': !inStock }" v-bind:src="image">
           </div>
           <div class="product-info">
-            <h1>{{ product }}</h1>
+            <h1>{{ title }}</h1>
             <p>{{ description }}</p>
             <p v-if="onSale">On Sale!!</p>
-            <div v-for="v in variants" :key="v.id" 
-              @mouseover="changeImage(v.image)" 
+            
+            <div v-for="(v,index) in variants" :key="v.id" 
+              @mouseover="updateVariant(index)" 
               class="color-circle" 
               :style="{ backgroundColor: v.color }">
             </div>
+
             <button class="button" @click="addToCart" 
               :class="{ disabledButton: !inStock }" 
               :disabled="!inStock" >
