@@ -16,16 +16,21 @@
         <div class="product-container">
           <div class="product-image">
             <!-- image goes here -->
-            <img v-bind:src="image">
+            <img :class="{ 'out-of-stock-img': !inStock }" v-bind:src="image">
           </div>
           <div class="product-info">
             <h1>{{ product }}</h1>
             <p>{{ description }}</p>
             <p v-if="onSale">On Sale!!</p>
-            <div v-for="v in variants" :key="v.id" @mouseover="changeImage(v.image)">
-              {{ v.color}}
+            <div v-for="v in variants" :key="v.id" 
+              @mouseover="changeImage(v.image)" 
+              class="color-circle" 
+              :style="{ backgroundColor: v.color }">
             </div>
-            <button class="button" @click="addToCart">Add to Cart</button>
+            <button class="button" @click="addToCart" 
+              :class="{ disabledButton: !inStock }" 
+              :disabled="!inStock" >
+              Add to Cart</button>
             <button class="button" @click="removeFromCart">Remove from Cart</button>
           </div>
         </div>
@@ -41,3 +46,5 @@
     </script>
   </body>
 </html>
+
+

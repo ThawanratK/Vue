@@ -6,6 +6,7 @@ const app = Vue.createApp({
             description: 'รองเท้าบูทส์',
             image: './assets/images/socks_green.jpg',
             onSale: false,
+            inStock: true,
             variants: [
                 { id: 2234, color: 'green', image: './assets/images/socks_green.jpg' },
                 { id: 2235, color: 'blue',  image: './assets/images/socks_blue.jpg' }
