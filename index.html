@@ -22,6 +22,9 @@
             <h1>{{ product }}</h1>
             <p>{{ description }}</p>
             <p v-if="OnSale">On Sale!!</p>
+            <div v-for="v in variants" :key="v.id">
+              {{ v.color}}
+            </div>
           </div>
         </div>
       </div>
